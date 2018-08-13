@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import Logo from './images/logo.svg'
 
 import './app.sass'
 import '../public/favicon.ico'
 
-class App extends React.Component {
+class App extends Component {
   state = {
     await: ''
   }
@@ -27,11 +27,11 @@ class App extends React.Component {
 
   render = () => {
     return (
-      <React.Fragment>
+      <Fragment>
         <img src={Logo} />
         <h1>It's work</h1>
         <p>{this.state.await}</p>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
