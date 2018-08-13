@@ -23,11 +23,7 @@ module.exports = Object.assign({}, baseWebpackConfig, {
     rules: [
       {
         test: /\.s?[ac]ss?$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          }
-        ]
+        use: [MiniCssExtractPlugin.loader]
       },
       ...baseWebpackConfig.module.rules
     ]

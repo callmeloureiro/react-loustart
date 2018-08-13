@@ -11,8 +11,6 @@ new WebpackDevServer(
   compiler,
   devWebpackConfig.devServer
 ).listen(devWebpackConfig.devServer.port, 'localhost', err => {
-  if (err) {
-    console.log(err)
-  }
+  if (err) console.log(err)
   console.log('Listening at localhost:' + devWebpackConfig.devServer.port)
 })

@@ -7,8 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 Object.keys(baseWebpackConfig.entry).forEach(name => {
   baseWebpackConfig.entry[name] = [
     `webpack-dev-server/client?http://127.0.0.1:${baseWebpackConfig.devServer.port}`,
-    'webpack/hot/only-dev-server'
-  ].concat(baseWebpackConfig.entry[name])
+    'webpack/hot/only-dev-server',
+    ...baseWebpackConfig.entry[name]
+  ]
 })
 
 module.exports = Object.assign({}, baseWebpackConfig, {
