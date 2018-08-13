@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const baseWebpackConfig = require('./webpack.base.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 Object.keys(baseWebpackConfig.entry).forEach(name => {
   baseWebpackConfig.entry[name] = [
@@ -17,11 +18,7 @@ module.exports = Object.assign({}, baseWebpackConfig, {
     rules: [
       {
         test: /\.s?[ac]ss?$/,
-        use: [
-          {
-            loader: 'style-loader'
-          }
-        ]
+        use: [ExtractCssChunks.loader]
       },
       ...baseWebpackConfig.module.rules
     ]
@@ -33,6 +30,7 @@ module.exports = Object.assign({}, baseWebpackConfig, {
       filename: 'index.html',
       template: './public/index.html',
       inject: true
-    })
+    }),
+    new ExtractCssChunks({ hot: true })
   ]
 })
