@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const baseWebpackConfig = require('./webpack.base.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 Object.keys(baseWebpackConfig.entry).forEach(name => {
   baseWebpackConfig.entry[name] = [
@@ -18,7 +18,7 @@ module.exports = Object.assign({}, baseWebpackConfig, {
     rules: [
       {
         test: /\.s?[ac]ss?$/,
-        use: [ExtractCssChunks.loader]
+        use: ['css-hot-loader', MiniCssExtractPlugin.loader]
       },
       ...baseWebpackConfig.module.rules
     ]
@@ -31,6 +31,9 @@ module.exports = Object.assign({}, baseWebpackConfig, {
       template: './public/index.html',
       inject: true
     }),
-    new ExtractCssChunks({ hot: true })
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    })
   ]
 })
