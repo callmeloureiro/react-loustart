@@ -1,1 +1,1 @@
-## A simples boilerplate
+## A simple boilerplate
