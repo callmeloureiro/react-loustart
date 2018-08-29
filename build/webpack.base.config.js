@@ -5,7 +5,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill', './src/app.js']
+    app: ['@babel/polyfill', './src/app.js']
   },
   output: {
     path: config.build.assetsRoot,
@@ -25,6 +25,9 @@ module.exports = {
     open: true
   },
   resolve: {
+    alias: {
+      Core: path.resolve('./src/core')
+    },
     extensions: ['.js', '.jsx']
   },
   module: {

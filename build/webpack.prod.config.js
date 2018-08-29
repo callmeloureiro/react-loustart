@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const clean = require('clean-webpack-plugin')
+const Clean = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const config = require('./config')
 const baseWebpackConfig = require('./webpack.base.config')
@@ -29,7 +29,7 @@ module.exports = Object.assign({}, baseWebpackConfig, {
     ]
   },
   plugins: [
-    new clean([config.build.assetsRoot], {
+    new Clean([config.build.assetsRoot], {
       root: process.cwd()
     }),
     new webpack.DefinePlugin({
